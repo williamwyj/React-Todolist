@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import "./App.scss";
+import Todoitem from "./components/Todoitem";
+import Inputfield from "./components/Inputfield";
 
 function App() {
+  // let displayData = ["task 1", "task 2"];
+  const [displayData, setDisplayData] = useState([]);
+  function addToDo(newTodo) {
+    return setDisplayData([...displayData, newTodo]);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Inputfield addToDo={addToDo} />
+      {displayData.map((todoData) => {
+        return <Todoitem content={todoData} />;
+      })}
     </div>
   );
 }
