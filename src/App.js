@@ -13,8 +13,8 @@ function App() {
   return (
     <div className='App'>
       <Inputfield addToDo={addToDo} />
-      {displayData.map((todoData) => {
-        return <Todoitem content={todoData} />;
+      {displayData.map((todoData, index) => {
+        return <Todoitem content={todoData} key={index} index={index} />;
       })}
     </div>
   );
