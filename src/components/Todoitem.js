@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 import "./Todoitem.scss";
 
 export default function TodoItem(props) {
@@ -9,8 +11,13 @@ export default function TodoItem(props) {
   let backgroundColor = toDoColors[props.index % 3];
   return (
     <div className={`module-toDo_item ${backgroundColor}`}>
-      <i className='fa-solid fa-pen-to-square'></i>
-      {props.content}
+      <FontAwesomeIcon icon={icon({ name: "pen-to-square", style: "solid" })} />
+      <div>{props.content}</div>
+      <span onClick={(e) => props.removeToDo(props.index)}>
+        <FontAwesomeIcon
+          icon={icon({ name: "circle-xmark", style: "regular" })}
+        />
+      </span>
     </div>
   );
 }
