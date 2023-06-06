@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import "./App.scss";
-import Todoitem from "./components/Todoitem";
+import Todoitemcontainer from "./components/Todoitemcontainer";
 import Inputfield from "./components/Inputfield";
 
 function App() {
@@ -15,16 +15,20 @@ function App() {
       displayData.filter((toDo, toDoIndex) => toDoIndex !== removeIndex)
     );
   }
+  function updateToDo(index, content) {
+    setDisplayData(displayData.toSpliced(index, 1, content));
+  }
   return (
     <div className='App'>
       <Inputfield addToDo={addToDo} />
       {displayData.map((todoData, index) => {
         return (
-          <Todoitem
+          <Todoitemcontainer
             content={todoData}
             key={index}
             index={index}
             removeToDo={removeToDo}
+            updateToDo={updateToDo}
           />
         );
       })}
