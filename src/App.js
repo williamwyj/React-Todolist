@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.scss";
 import Todoitemcontainer from "./components/Todoitemcontainer";
 import Inputfield from "./components/Inputfield";
+import Time from "./components/Time";
 
 function App() {
   const [displayData, setDisplayData] = useState([]);
@@ -20,6 +21,7 @@ function App() {
   }
   return (
     <div className='App'>
+      <Time />
       <Inputfield addToDo={addToDo} />
       {displayData.map((todoData, index) => {
         return (
